@@ -4,7 +4,8 @@
   "description": "A collection of useful macros for @architecture.",
   "private": true,
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "release": "lerna publish"
   },
   "repository": {
     "type": "git",
