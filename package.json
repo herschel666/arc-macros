@@ -1,0 +1,23 @@
+{
+  "name": "@herschel666/arc-macros",
+  "version": "0.1.0",
+  "description": "A collection of useful macros for @architecture.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"TODO: add tests\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/herschel666/arc-macros.git"
+  },
+  "keywords": [
+    "arc",
+    "architecture"
+  ],
+  "author": "Emanuel Kluge (https://www.emanuel-kluge.de/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/herschel666/arc-macros/issues"
+  },
+  "homepage": "https://github.com/herschel666/arc-macros#readme"
+}
