@@ -1,7 +1,7 @@
 {
   "name": "@herschel666/arc-macros",
   "version": "0.1.0",
-  "description": "A collection of useful macros for @architecture.",
+  "description": "A collection of useful macros for @architect.",
   "private": true,
   "scripts": {
     "test": "ava",
