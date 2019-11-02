@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/herschel666/arc-macros/issues"
   },
-  "homepage": "https://github.com/herschel666/arc-macros#readme"
+  "homepage": "https://github.com/herschel666/arc-macros#readme",
+  "devDependencies": {
+    "lerna": "^3.18.3"
+  }
 }
