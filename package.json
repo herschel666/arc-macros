@@ -4,7 +4,7 @@
   "description": "A collection of useful macros for @architecture.",
   "private": true,
   "scripts": {
-    "test": "echo \"TODO: add tests\""
+    "test": "ava"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/herschel666/arc-macros/issues"
   },
-  "homepage": "https://github.com/herschel666/arc-macros#readme"
+  "homepage": "https://github.com/herschel666/arc-macros#readme",
+  "devDependencies": {
+    "ava": "^2.4.0",
+    "lerna": "^3.18.3"
+  },
+  "ava": {
+    "files": ["macros/**/test.js"]
+  }
 }

@@ -1,0 +1,22 @@
+{
+  "name": "herschel666-arc-macros-custom-log-groups",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "test": "cd ../.. && npm test"
+  },
+  "keywords": [
+    "arc",
+    "architecture",
+    "macro"
+  ],
+  "author": "Emanuel Kluge (https://www.emanuel-kluge.de/)",
+  "license": "MIT",
+  "devDependencies": {
+    "@architect/parser": "^1.2.1"
+  }
+}
