@@ -1,6 +1,6 @@
 # `herschel666-arc-macros-custom-log-groups`
 
-> Create log groups for [@architecture](https://arc.codes/)'s Lambda functions with a custom
+> Create log groups for [@architect](https://arc.codes/)'s Lambda functions with a custom
 > [`RetentionInDays`](https://docs.aws.amazon.com/en_en/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html#cfn-cwl-loggroup-retentionindays)-value.
 
 ## Installation
