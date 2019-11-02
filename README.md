@@ -1,6 +1,6 @@
 # `arc-macros`
 
-> A collection of useful macros for [@architecture](https://arc.codes/).
+> A collection of useful macros for [@architect](https://arc.codes/).
 
 ## Available macros
 
