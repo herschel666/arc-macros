@@ -23,7 +23,7 @@
   "homepage": "https://github.com/herschel666/arc-macros#readme",
   "devDependencies": {
     "ava": "2.4.0",
-    "lerna": "3.18.3"
+    "lerna": "3.18.4"
   },
   "ava": {
     "files": ["macros/**/test.js"]
