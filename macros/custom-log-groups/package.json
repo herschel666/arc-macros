@@ -17,6 +17,6 @@
   "author": "Emanuel Kluge (https://www.emanuel-kluge.de/)",
   "license": "MIT",
   "devDependencies": {
-    "@architect/parser": "1.2.1"
+    "@architect/parser": "1.2.2"
   }
 }
