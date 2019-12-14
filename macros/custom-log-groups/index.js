@@ -2,6 +2,9 @@ const { name } = require('./package.json');
 
 const DEFAULT_RETENTION = 14;
 
+const isActive = (arc = {}) =>
+  Array.isArray(arc.macros) && arc.macros.includes(name);
+
 const getRetentionInDays = (arc = {}) => {
   if (
     Array.isArray(arc[name]) &&
@@ -14,27 +17,29 @@ const getRetentionInDays = (arc = {}) => {
 };
 
 module.exports = (arc, cfn) => {
-  Object.keys(cfn.Resources)
-    .filter((k) => cfn.Resources[k].Type === 'AWS::Serverless::Function')
-    .forEach((lambda) => {
-      cfn.Resources[`${lambda}LogGroup`] = {
-        Type: 'AWS::Logs::LogGroup',
-        DependsOn: [lambda],
-        Properties: {
-          LogGroupName: {
-            'Fn::Sub': [
-              '/aws/lambda/${lambda}',
-              {
-                lambda: {
-                  Ref: lambda,
+  if (isActive(arc)) {
+    Object.keys(cfn.Resources)
+      .filter((k) => cfn.Resources[k].Type === 'AWS::Serverless::Function')
+      .forEach((lambda) => {
+        cfn.Resources[`${lambda}LogGroup`] = {
+          Type: 'AWS::Logs::LogGroup',
+          DependsOn: [lambda],
+          Properties: {
+            LogGroupName: {
+              'Fn::Sub': [
+                '/aws/lambda/${lambda}',
+                {
+                  lambda: {
+                    Ref: lambda,
+                  },
                 },
-              },
-            ],
+              ],
+            },
+            RetentionInDays: getRetentionInDays(arc),
           },
-          RetentionInDays: getRetentionInDays(arc),
-        },
-      };
-    });
+        };
+      });
+  }
 
   return cfn;
 };
