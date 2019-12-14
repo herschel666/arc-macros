@@ -21,7 +21,7 @@ const arc = parser(`
 @app
 test
 
-@marcos
+@macros
 herschel666-arc-macros-custom-log-groups
 
 @herschel666-arc-macros-custom-log-groups
@@ -31,7 +31,7 @@ const erroneousArc = parser(`
 @app
 test
 
-@marcos
+@macros
 herschel666-arc-macros-custom-log-groups
 
 @herschel666-arc-macros-custom-log-groups
