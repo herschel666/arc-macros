@@ -26,6 +26,8 @@
     "lerna": "3.19.0"
   },
   "ava": {
-    "files": ["macros/**/test.js"]
+    "files": [
+      "macros/**/test.js"
+    ]
   }
 }
