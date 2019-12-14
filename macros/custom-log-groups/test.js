@@ -17,7 +17,14 @@ const cfn = {
     },
   },
 };
-const arc = parser(`
+const activeArc = parser(`
+@app
+test
+
+@macros
+herschel666-arc-macros-custom-log-groups
+`);
+const customRetentionArc = parser(`
 @app
 test
 
@@ -26,6 +33,10 @@ herschel666-arc-macros-custom-log-groups
 
 @herschel666-arc-macros-custom-log-groups
 retentionInDays ${retentionInDays}
+`);
+const inactiveArc = parser(`
+@app
+test
 `);
 const erroneousArc = parser(`
 @app
@@ -38,8 +49,15 @@ herschel666-arc-macros-custom-log-groups
 retentionInDays sevenWeeks
 `);
 
+const clone = (o) => JSON.parse(JSON.stringify(o));
+
+test('do nothing when not applied', (t) => {
+  t.deepEqual(customLogGroup(void 0, clone(cfn)), cfn);
+  t.deepEqual(customLogGroup(inactiveArc, clone(cfn)), cfn);
+});
+
 test('it adds log groups for both lambda functions', (t) => {
-  const result = customLogGroup(undefined, cfn);
+  const result = customLogGroup(activeArc, clone(cfn));
 
   t.truthy(result.Resources.GetIndexLogGroup);
   t.is(result.Resources.GetIndexLogGroup.Type, 'AWS::Logs::LogGroup');
@@ -71,7 +89,7 @@ test('it adds log groups for both lambda functions', (t) => {
 });
 
 test('is considers custom retention values', (t) => {
-  const result = customLogGroup(arc, cfn);
+  const result = customLogGroup(customRetentionArc, clone(cfn));
 
   t.is(
     result.Resources.GetIndexLogGroup.Properties.RetentionInDays,
@@ -84,7 +102,7 @@ test('is considers custom retention values', (t) => {
 });
 
 test('is ignores incorrect values', (t) => {
-  const result = customLogGroup(erroneousArc, cfn);
+  const result = customLogGroup(erroneousArc, clone(cfn));
 
   t.is(result.Resources.GetIndexLogGroup.Properties.RetentionInDays, 14);
   t.is(result.Resources.PostIndexLogGroup.Properties.RetentionInDays, 14);
