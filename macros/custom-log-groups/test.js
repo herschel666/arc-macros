@@ -1,7 +1,7 @@
-import test from 'ava';
-import parser from '@architect/parser';
+const test = require('ava');
+const parser = require('@architect/parser');
 
-import customLogGroup from '.';
+const customLogGroup = require('.');
 
 const retentionInDays = 7;
 const cfn = {
