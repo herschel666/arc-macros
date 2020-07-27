@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/herschel666/arc-macros#readme",
   "devDependencies": {
-    "ava": "3.10.1",
+    "ava": "3.11.0",
     "lerna": "3.22.1"
   },
   "ava": {
