@@ -4,6 +4,7 @@
   "description": "A collection of useful macros for @architect.",
   "private": true,
   "scripts": {
+    "postinstall": "lerna bootstrap",
     "test": "ava",
     "release": "lerna publish"
   },
