@@ -6,7 +6,7 @@ const isActive = (arc = {}) =>
 const convertParamPlaceholders = (route) =>
   route.replace(/:([^/]+)/g, (_, name) => `{${name}}`);
 
-const getFunctionDeclarationForLocalRoute = (route) => ([prop, value]) => {
+const getFunctionDeclarationForLocalRoute = (route) => ([, value]) => {
   if (value.Type !== 'AWS::Serverless::Function') {
     return false;
   }
