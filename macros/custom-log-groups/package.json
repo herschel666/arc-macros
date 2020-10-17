@@ -15,8 +15,5 @@
     "macro"
   ],
   "author": "Emanuel Kluge (https://www.emanuel-kluge.de/)",
-  "license": "MIT",
-  "devDependencies": {
-    "@architect/parser": "2.3.0"
-  }
+  "license": "MIT"
 }
