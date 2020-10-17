@@ -39,6 +39,7 @@ test
 get /
 get /api/:foo
 `);
+// eslint-disable-next-line no-unused-vars
 const { Description, ...cfnToBe } = toServerlessCloudFormation(arcToBe);
 
 test('Ignore Cloudformation template when macro is not included', async (t) => {
@@ -50,6 +51,7 @@ test('Ignore Cloudformation template when macro is not included', async (t) => {
 
 test('Removing the routes from Cloudformation template', (t) => {
   t.plan(1);
+  // eslint-disable-next-line no-unused-vars
   const { Description, ...result } = macro(arc, cfn);
   t.deepEqual(result, cfnToBe);
 });
