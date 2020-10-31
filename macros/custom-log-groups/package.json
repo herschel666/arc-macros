@@ -1,6 +1,6 @@
 {
   "name": "herschel666-arc-macros-custom-log-groups",
-  "version": "0.1.3-alpha.0",
+  "version": "0.1.2",
   "description": "Create log groups for @architect's Lambda functions with a custom RetentionInDays-value.",
   "main": "index.js",
   "engines": {
