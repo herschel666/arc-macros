@@ -1,7 +1,7 @@
 {
   "name": "herschel666-arc-macros-remove-local-routes",
   "version": "0.1.0-alpha.1",
-  "description": "",
+  "description": "Remove selected routes from @architect's Lambda functions before the deployment. A handy solution when you're leveraging HTTP handlers for local scaffolding tasks.",
   "main": "index.js",
   "engines": {
     "node": ">=10.0.0"
@@ -12,8 +12,14 @@
   "keywords": [
     "arc",
     "architect",
-    "macro"
+    "macro",
+    "aws"
   ],
-  "author": "Emanuel Kluge (https://www.emanuel-kluge.de/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/herschel666/arc-macros.git"
+  },
+  "homepage": "https://github.com/herschel666/arc-macros/tree/KillYourMaster/macros/remove-local-routes",
+  "author": "Emanuel Kluge <kraemerseele@gmx.de>",
   "license": "MIT"
 }
