@@ -1,5 +1,5 @@
 const test = require('ava');
-const parser = require('@architect/parser');
+const inventory = require('@architect/inventory');
 
 const customLogGroup = require('.');
 
@@ -17,14 +17,14 @@ const cfn = {
     },
   },
 };
-const activeArc = parser(`
+const activeArcRaw = `
 @app
 test
 
 @macros
 herschel666-arc-macros-custom-log-groups
-`);
-const customRetentionArc = parser(`
+`;
+const customRetentionArcRaw = `
 @app
 test
 
@@ -33,12 +33,12 @@ herschel666-arc-macros-custom-log-groups
 
 @herschel666-arc-macros-custom-log-groups
 retentionInDays ${retentionInDays}
-`);
-const inactiveArc = parser(`
+`;
+const inactiveArcRaw = `
 @app
 test
-`);
-const erroneousArc = parser(`
+`;
+const erroneousArcRaw = `
 @app
 test
 
@@ -47,16 +47,23 @@ herschel666-arc-macros-custom-log-groups
 
 @herschel666-arc-macros-custom-log-groups
 retentionInDays sevenWeeks
-`);
+`;
+
+const parse = async (rawArc) => {
+  const { inv } = await inventory({ rawArc });
+  return inv._project.arc;
+};
 
 const clone = (o) => JSON.parse(JSON.stringify(o));
 
-test('do nothing when not applied', (t) => {
+test('do nothing when not applied', async (t) => {
+  const inactiveArc = await parse(inactiveArcRaw);
   t.deepEqual(customLogGroup(void 0, clone(cfn)), cfn);
   t.deepEqual(customLogGroup(inactiveArc, clone(cfn)), cfn);
 });
 
-test('it adds log groups for both lambda functions', (t) => {
+test('it adds log groups for both lambda functions', async (t) => {
+  const activeArc = await parse(activeArcRaw);
   const result = customLogGroup(activeArc, clone(cfn));
 
   t.truthy(result.Resources.GetIndexLogGroup);
@@ -88,7 +95,8 @@ test('it adds log groups for both lambda functions', (t) => {
   t.is(result.Resources.PostIndexLogGroup.Properties.RetentionInDays, 14);
 });
 
-test('is considers custom retention values', (t) => {
+test('is considers custom retention values', async (t) => {
+  const customRetentionArc = await parse(customRetentionArcRaw);
   const result = customLogGroup(customRetentionArc, clone(cfn));
 
   t.is(
@@ -101,7 +109,8 @@ test('is considers custom retention values', (t) => {
   );
 });
 
-test('is ignores incorrect values', (t) => {
+test('is ignores incorrect values', async (t) => {
+  const erroneousArc = await parse(erroneousArcRaw);
   const result = customLogGroup(erroneousArc, clone(cfn));
 
   t.is(result.Resources.GetIndexLogGroup.Properties.RetentionInDays, 14);
