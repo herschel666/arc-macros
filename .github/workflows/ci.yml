@@ -1,6 +1,10 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - KillYourMaster
+  pull_request:
 
 jobs:
   ci:
