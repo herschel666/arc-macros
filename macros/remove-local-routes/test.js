@@ -1,15 +1,15 @@
 const test = require('ava');
-const parse = require('@architect/parser');
+const inventory = require('@architect/inventory');
 const toServerlessCloudFormation = require('@architect/package');
 
 const macro = require('.');
 
-const otherArc = parse(`
+const otherArcRaw = `
 @app
 test
-`);
+`;
 
-const arc = parse(`
+const arcRaw = `
 @app
 test
 
@@ -28,29 +28,43 @@ herschel666-arc-macros-remove-local-routes
 /foo/:bar
 /foo/lorem
 /some/:other/route/:with/:params
-`);
-const cfn = toServerlessCloudFormation(arc);
+`;
 
-const arcToBe = parse(`
+const arcToBe = `
 @app
 test
 
 @http
 get /
 get /api/:foo
-`);
-// eslint-disable-next-line no-unused-vars
-const { Description, ...cfnToBe } = toServerlessCloudFormation(arcToBe);
+`;
+
+const getOtherArc = async () => inventory({ rawArc: otherArcRaw });
+
+const getArc = async () => {
+  const { inv } = await inventory({ rawArc: arcRaw });
+  const cfn = toServerlessCloudFormation({ inv });
+  return { arc: inv._project.arc, cfn };
+};
+
+const getCfnToBe = async () => {
+  const { inv } = await inventory({ rawArc: arcToBe });
+  // eslint-disable-next-line no-unused-vars
+  const { Description, ...cfnToBe } = toServerlessCloudFormation({ inv });
+  return cfnToBe;
+};
 
 test('Ignore Cloudformation template when macro is not included', async (t) => {
   t.plan(1);
   const cfn = {};
-  const result = macro(otherArc, cfn);
+  const result = macro(await getOtherArc(), cfn);
   t.is(result, cfn);
 });
 
-test('Removing the routes from Cloudformation template', (t) => {
+test('Removing the routes from Cloudformation template', async (t) => {
   t.plan(1);
+  const { arc, cfn } = await getArc();
+  const cfnToBe = await getCfnToBe();
   // eslint-disable-next-line no-unused-vars
   const { Description, ...result } = macro(arc, cfn);
   t.deepEqual(result, cfnToBe);
