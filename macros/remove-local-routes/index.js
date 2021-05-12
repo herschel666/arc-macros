@@ -6,14 +6,16 @@ const isActive = (arc = {}) =>
 const convertParamPlaceholders = (route) =>
   route.replace(/:([^/]+)/g, (_, name) => `{${name}}`);
 
-const getFunctionDeclarationForLocalRoute = (route) => ([, value]) => {
-  if (value.Type !== 'AWS::Serverless::Function') {
-    return false;
-  }
-  const [event] = Object.values(value.Properties.Events);
+const getFunctionDeclarationForLocalRoute =
+  (route) =>
+  ([, value]) => {
+    if (value.Type !== 'AWS::Serverless::Function') {
+      return false;
+    }
+    const [event] = Object.values(value.Properties.Events);
 
-  return event.Properties.Path === route;
-};
+    return event.Properties.Path === route;
+  };
 
 module.exports = (arc, cfn) => {
   if (isActive(arc)) {
