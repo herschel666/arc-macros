@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/herschel666/arc-macros#readme",
   "devDependencies": {
-    "@architect/inventory": "1.4.1",
+    "@architect/inventory": "1.4.3",
     "@architect/package": "6.2.1",
     "ava": "3.15.0",
     "eslint": "7.29.0",
