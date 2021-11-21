@@ -4,7 +4,7 @@
   "description": "Remove selected routes from @architect's Lambda functions before the deployment. A handy solution when you're leveraging HTTP handlers for local scaffolding tasks.",
   "main": "index.js",
   "engines": {
-    "node": ">=10.0.0"
+    "node": "^12 || ^14 || ^16 || ^17"
   },
   "scripts": {
     "test": "cd ../.. && npm test"
