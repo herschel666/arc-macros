@@ -15,7 +15,7 @@
     "url": "git+ssh://git@github.com/herschel666/arc-macros.git"
   },
   "engines": {
-    "node": "^12 || ^14 || ^16 || ^17"
+    "node": "^14 || ^16 || ^17"
   },
   "keywords": [
     "arc",
