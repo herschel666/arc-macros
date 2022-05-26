@@ -1,6 +1,6 @@
 {
   "name": "herschel666-arc-macros-remove-local-routes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Remove selected routes from @architect's Lambda functions before the deployment. A handy solution when you're leveraging HTTP handlers for local scaffolding tasks.",
   "main": "index.js",
   "engines": {
