@@ -29,7 +29,7 @@
   "homepage": "https://github.com/herschel666/arc-macros#readme",
   "devDependencies": {
     "@architect/inventory": "2.2.1",
-    "@architect/package": "7.2.0",
+    "@architect/package": "8.5.2",
     "ava": "4.3.3",
     "eslint": "8.56.0",
     "eslint-config-prettier": "8.8.0",
