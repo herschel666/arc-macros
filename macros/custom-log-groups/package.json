@@ -4,7 +4,7 @@
   "description": "Create log groups for @architect's Lambda functions with a custom RetentionInDays-value.",
   "main": "index.js",
   "engines": {
-    "node": "^14 || ^16 || ^18"
+    "node": "^14 || ^16 || ^18 || ^20.0.0"
   },
   "scripts": {
     "test": "cd ../.. && npm test"
