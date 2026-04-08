@@ -30,7 +30,7 @@
   "devDependencies": {
     "@architect/inventory": "2.2.1",
     "@architect/package": "7.2.0",
-    "ava": "4.3.3",
+    "ava": "7.0.0",
     "eslint": "8.57.1",
     "eslint-config-prettier": "8.10.2",
     "eslint-plugin-prettier": "4.2.5",
